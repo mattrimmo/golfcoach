@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matt's four-week golf coaching pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F8FB; --panel:#FFFFFF; --ink:#0B1A33; --muted:#586579; --hair:#D3DAE4;
+  --navy:#00205B; --green:#0F4636; --gold:#A8894A; --goldsoft:#F1E9D3; --rust:#B4532A; --ok:#1F7A57; --mid:#B08A2E;
+  --band:#0F4636; --bandink:#F4F1E4; --bandgold:#D8C283;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A121D; --panel:#111C2B; --ink:#E9EEF5; --muted:#9BA9BB; --hair:#26364A;
+    --navy:#8FB0E8; --green:#79C4A5; --gold:#D6BC7A; --goldsoft:#2A2717; --rust:#E58F63; --ok:#6FCBA3; --mid:#D6BC7A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A121D; --panel:#111C2B; --ink:#E9EEF5; --muted:#9BA9BB; --hair:#26364A;
+  --navy:#8FB0E8; --green:#79C4A5; --gold:#D6BC7A; --goldsoft:#2A2717; --rust:#E58F63; --ok:#6FCBA3; --mid:#D6BC7A;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15;margin:0;color:var(--ink)}
+h1{font-size:clamp(2rem,5.6vw,3.3rem);letter-spacing:-0.01em}
+h2{font-size:clamp(1.55rem,3.6vw,2.05rem);margin-bottom:.5rem}
+h3{font-size:1.2rem;margin:1.6rem 0 .4rem}
+p{margin:.55rem 0;max-width:70ch}
+a{color:var(--navy)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--hair);padding-top:env(safe-area-inset-top,0px)}
+.nav .wrap{display:flex;gap:4px;overflow-x:auto;white-space:nowrap}
+.nav a{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:600;font-size:1.05rem;text-decoration:none;color:var(--muted);padding:12px 12px;border-bottom:3px solid transparent}
+.nav a:hover,.nav a:focus-visible{color:var(--ink);border-bottom-color:var(--gold);outline:none}
+.band{background:var(--band);color:var(--bandink);border-bottom:4px solid var(--bandgold)}
+.band h1{color:var(--bandink)}
+.band .wrap{padding-top:44px;padding-bottom:34px}
+.band p{color:#DCE6DD;font-size:1.05rem}
+.band .goal{margin-top:16px;font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;color:var(--bandgold);font-weight:600}
+section{padding:46px 0 10px}
+section+section{border-top:1px solid var(--hair)}
+.lede{font-size:1.06rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+table{border-collapse:collapse;width:100%;background:var(--panel);border:1px solid var(--hair);font-size:.98rem}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hair)}
+thead th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.05rem;background:var(--goldsoft);color:var(--ink);border-bottom:2px solid var(--gold);white-space:nowrap}
+td.num,th.num{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:600;white-space:nowrap}
+td.hl{color:var(--rust)}
+td.tg{color:var(--ok)}
+tbody tr:last-child td{border-bottom:none}
+.score td:first-child{width:42px;color:var(--muted);font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.1rem}
+.fig{width:100%;height:auto;display:block;margin:10px 0}
+.fig text{font-family:Inter,system-ui,sans-serif}
+.fig .grid{stroke:var(--hair);stroke-width:1;fill:none}
+.fig .zero{stroke:var(--ink);stroke-width:1.4}
+.fig .ax{font-size:11px;fill:var(--muted)}
+.fig .val{font-size:12px;fill:var(--ink);font-weight:600}
+.fig .lab{font-size:12.5px;fill:var(--ink)}
+.fig .note{font-size:11.5px;fill:var(--muted)}
+.fig .pos{fill:var(--ok)}
+.fig .neg{fill:var(--rust)}
+.fig .mid{fill:var(--mid)}
+.fig .hatch{opacity:.85}
+.fig .mark{stroke:var(--navy);stroke-width:1.2;stroke-dasharray:3 4}
+.fig .body{stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.fig .ghost{stroke:var(--muted);stroke-width:3;stroke-dasharray:2 6;stroke-linecap:round;opacity:.7;fill:none}
+.fig .head{fill:var(--panel);stroke:var(--ink);stroke-width:4}
+.fig .ghosthead{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:2 5;opacity:.7}
+.fig .club{stroke:var(--gold);stroke-width:4;stroke-linecap:round}
+.fig .arrow{stroke:var(--rust);stroke-width:3;fill:none;marker-end:url(#a)}
+.fig .wall{fill:var(--hair);stroke:var(--muted);stroke-width:1.5}
+.fig .ballc{fill:var(--panel);stroke:var(--ink);stroke-width:2}
+.fig .tline{stroke:var(--gold);stroke-width:2.2;stroke-dasharray:7 5}
+.fig .flagp{stroke:var(--ink);stroke-width:2}
+.fig .flag{fill:var(--rust)}
+.fig .stick{stroke:var(--navy);stroke-width:6;stroke-linecap:round}
+.fig .shoe{fill:var(--ink)}
+.fig .face{fill:var(--ink)}
+.fig .aim{stroke:var(--ok);stroke-width:2.4;stroke-dasharray:2 6;stroke-linecap:round}
+.fig .miss{fill:var(--rust);opacity:.85}
+.fig .clubface{fill:var(--panel);stroke:var(--ink);stroke-width:3}
+.fig .sweet{fill:var(--goldsoft);stroke:var(--gold);stroke-width:2}
+.fig .green{fill:var(--ok);opacity:.35}
+.fig .flight{stroke:var(--navy);stroke-width:3;fill:none}
+.fig .roll{stroke:var(--gold);stroke-width:3;stroke-dasharray:6 5}
+.fig .towel{fill:var(--navy)}
+.fig .zone{fill:var(--gold);opacity:.4}
+.fig-n{max-width:500px;margin-left:auto;margin-right:auto}
+.figrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.figrow figure{margin:0;background:var(--panel);border:1px solid var(--hair);padding:8px 10px 6px}
+figcaption{font-size:.9rem;color:var(--muted);padding:2px 2px 6px}
+figure.one{margin:14px 0;background:var(--panel);border:1px solid var(--hair);padding:10px 14px 6px}
+.box{background:var(--panel);border:1px solid var(--hair);border-left:4px solid var(--gold);padding:14px 18px;margin:16px 0}
+.box.warn{border-left-color:var(--rust)}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box b.t{font-family:"Barlow Condensed",sans-serif;font-size:1.15rem}
+.rules{counter-reset:r;list-style:none;padding:0;margin:12px 0}
+.rules li{counter-increment:r;display:grid;grid-template-columns:38px 1fr;padding:10px 0;border-bottom:1px solid var(--hair)}
+.rules li::before{content:counter(r);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.3rem;color:var(--gold)}
+.drill{background:var(--panel);border:1px solid var(--hair);margin:18px 0;scroll-margin-top:70px}
+.drill header{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding:10px 16px;background:var(--goldsoft);border-bottom:2px solid var(--gold)}
+.drill header .id{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.4rem;color:var(--ink)}
+.drill header h3{margin:0;font-size:1.2rem}
+.drill header .meta{margin-left:auto;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.05rem;color:var(--muted)}
+.drill .body{padding:6px 16px 12px}
+.drill dl{display:grid;grid-template-columns:118px 1fr;gap:0;margin:8px 0}
+.drill dt{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.05rem;color:var(--muted);padding:7px 0;border-top:1px solid var(--hair)}
+.drill dd{margin:0;padding:7px 0;border-top:1px solid var(--hair)}
+.drill ol,.drill ul{margin:.2rem 0;padding-left:1.2rem}
+.drill li{margin:.15rem 0}
+@media (max-width:560px){.drill dl{grid-template-columns:1fr}.drill dt{border-bottom:none;padding-bottom:0}.drill dd{border-top:none;padding-top:0}}
+.wk{margin:22px 0}
+.wk h3{margin:0 0 4px}
+.wk .theme{margin:0 0 8px;color:var(--muted)}
+.wk h4{font-family:"Barlow Condensed",sans-serif;font-size:1.15rem;margin:16px 0 4px;font-weight:700}
+.wk td.ck{width:38px;padding-right:0}
+.wk input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok)}
+.wk table{table-layout:fixed}
+.wk td.dur{white-space:nowrap;font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:600;width:96px}
+.wk td.ref{width:54px;font-family:"Barlow Condensed",sans-serif;font-weight:600;color:var(--muted)}
+.wk tr.done td{opacity:.55;text-decoration:line-through}
+form.log{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 12px;background:var(--panel);border:1px solid var(--hair);padding:16px;margin:14px 0}
+form.log label{display:flex;flex-direction:column;font-size:.85rem;color:var(--muted);gap:3px}
+form.log input,form.log select{font:inherit;font-size:1rem;padding:8px;border:1px solid var(--hair);background:var(--bg);color:var(--ink);border-radius:2px;min-width:0}
+form.log input:focus,form.log select:focus,button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+form.log .wide{grid-column:1/-1}
+button{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.1rem;padding:9px 20px;border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;border-radius:2px}
+:root[data-theme="dark"] button,:root:not([data-theme="light"]) button{color:#0A121D}
+button.ghost{background:transparent;color:var(--navy);border-color:var(--hair)}
+:root[data-theme="dark"] button.ghost{color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) button.ghost{color:var(--navy)}}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+textarea.exp{width:100%;min-height:140px;font-family:Inter,monospace;font-size:.85rem;background:var(--panel);color:var(--ink);border:1px solid var(--hair);padding:10px}
+.empty{padding:18px;border:1px dashed var(--hair);color:var(--muted);background:var(--panel)}
+footer{padding:36px 0 60px;color:var(--muted);font-size:.9rem}
+@media (max-width:560px){.score th:first-child,.score td:first-child{width:22px;padding-left:8px;padding-right:0}.score th,.score td{padding:8px 6px}.score td.num,.score th.num{font-size:1rem;white-space:normal}}
+@media print{
+  .nav,.actions,form.log,textarea.exp{display:none}
+  body{background:#fff;color:#000}
+  section{page-break-inside:auto;padding-top:22px}
+  .drill,.box,figure,.wk{break-inside:avoid}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Sections"><div class="wrap">
+<a href="#scorecard">Scorecard</a><a href="#diagnosis">Diagnosis</a><a href="#priorities">Priorities</a><a href="#drills">Drills</a><a href="#schedule">Schedule</a><a href="#course">Course</a><a href="#log">Log</a><a href="#notes">Data notes</a>
+</div></nav>
+
+<header class="band"><div class="wrap">
+<h1>Matt's four-week game plan</h1>
+<p>Built from 1,552 SwingSync shots across 14 sessions, 25 June to 16 September 2026. Handicap 29.2. Best full round 107.</p>
+<p class="goal">First target: break 100. Then break 90.</p>
+</div></header>
+
+<main class="wrap">
+
+<section id="scorecard">
+<h2>Your scorecard</h2>
+<p class="lede">Nine numbers decide whether this plan is working. Log them, and check them against the week 4 column.</p>
+<div class="scroll"><table class="score">
+<thead><tr><th></th><th>Measure</th><th class="num">Now</th><th class="num">Week 4</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Putts per round (last full round)</td><td class="num hl">42</td><td class="num tg">38 or fewer</td></tr>
+<tr><td>2</td><td>Greens in regulation</td><td class="num hl">5</td><td class="num tg">6 or more</td></tr>
+<tr><td>3</td><td>Fairways hit</td><td class="num hl">7</td><td class="num tg">8 or more</td></tr>
+<tr><td>4</td><td>Ugly shots with driver, 3 wood and hybrid</td><td class="num hl">56%</td><td class="num tg">40% or fewer</td></tr>
+<tr><td>5</td><td>Long-club shots hit down through the ball (attack angle steeper than -2 degrees)</td><td class="num hl">54%</td><td class="num tg">70% or more</td></tr>
+<tr><td>6</td><td>5 iron: median miss, yards right of target</td><td class="num hl">12.7</td><td class="num tg">8 or less</td></tr>
+<tr><td>7</td><td>Shanks per 100 shots</td><td class="num hl">11</td><td class="num tg">4 or fewer</td></tr>
+<tr><td>8</td><td>Good shots, all clubs (3 to 16 Sep)</td><td class="num hl">47%</td><td class="num tg">50% or more</td></tr>
+<tr><td>9</td><td>Nine holes from the yellow tees</td><td class="num hl">52</td><td class="num tg">49 or fewer</td></tr>
+</tbody></table></div>
+<p class="small muted">Row 9 is the pace for 99 on a par 72. Twice 49 is 98.</p>
+<div class="box"><p><b class="t">What 99 looks like.</b> On a par 72, 99 is 27 over. Nine bogeys and nine double bogeys does it, with no pars needed. The plan is built around cutting the triples, the lost balls and the three-putts, not around hitting it better.</p></div>
+</section>
+
+<section id="diagnosis">
+<h2>Where the strokes go</h2>
+<p class="lede">Three leaks explain most of the gap between your current scores and 99.</p>
+<div class="scroll"><table>
+<thead><tr><th>Leak</th><th>What the data says</th><th>Worth</th></tr></thead>
+<tbody>
+<tr><td><b>Putting</b></td><td>42 putts in the last round. Roughly 36 to 38 is normal for your handicap. Your putting work so far has been face and path on the carpet. Speed is the missing piece.</td><td class="num">4 to 6 shots</td></tr>
+<tr><td><b>Long clubs off the tee</b></td><td>Driver 59% ugly, 3 wood 52%, hybrid 56% in September. Seven fairways from fourteen. Your 4 iron is 61% good and only 14% ugly, and it carries 175 yards against the driver's 189.</td><td class="num">Lost balls and penalties</td></tr>
+<tr><td><b>5 iron and the right miss</b></td><td>78% of your 5 irons finish right, median 13 yards. Your other irons sit within 3 to 7 yards of target. Only 5 greens in regulation.</td><td class="num">1 to 2 greens</td></tr>
+</tbody></table></div>
+<h3>You are improving, and this is the proof</h3>
+<p>The bars compare your good-shot rate each day against what your all-time average predicts for the clubs you hit that day. That removes the flattering effect of easy club mixes. In late June you were 22 to 26 points below expected. Since 27 August you have been 6 to 17 points above.</p>
+<figure class="one"><svg viewBox="0 0 680 310" role="img" aria-label="Good-shot rate against expected, by session, rising from 22 to 26 points below expected in late June to 6 to 17 points above since 27 August" class="fig"><line x1="46" x2="670" y1="246.0" y2="246.0" class="grid"/><text x="40" y="250.0" class="ax" text-anchor="end">-30</text><line x1="46" x2="670" y1="200.8" y2="200.8" class="grid"/><text x="40" y="204.8" class="ax" text-anchor="end">-20</text><line x1="46" x2="670" y1="155.6" y2="155.6" class="grid"/><text x="40" y="159.6" class="ax" text-anchor="end">-10</text><line x1="46" x2="670" y1="110.4" y2="110.4" class="zero"/><text x="40" y="114.4" class="ax" text-anchor="end">0</text><line x1="46" x2="670" y1="65.2" y2="65.2" class="grid"/><text x="40" y="69.2" class="ax" text-anchor="end">+10</text><line x1="46" x2="670" y1="20.0" y2="20.0" class="grid"/><text x="40" y="24.0" class="ax" text-anchor="end">+20</text><rect x="52.7" y="110.4" width="31.2" height="99.4" class="neg"/><text x="68.3" y="222.8" class="val" text-anchor="middle">-22</text><text x="68.3" y="262" class="ax" text-anchor="end" transform="rotate(-45 68.3 262)">25 Jun</text><rect x="97.3" y="110.4" width="31.2" height="117.5" class="neg"/><text x="112.9" y="240.9" class="val" text-anchor="middle">-26</text><text x="112.9" y="262" class="ax" text-anchor="end" transform="rotate(-45 112.9 262)">27 Jun</text><rect x="141.8" y="110.4" width="31.2" height="45.2" class="neg"/><text x="157.4" y="168.6" class="val" text-anchor="middle">-10</text><text x="157.4" y="262" class="ax" text-anchor="end" transform="rotate(-45 157.4 262)">29 Jun</text><rect x="186.4" y="110.4" width="31.2" height="4.5" class="neg"/><text x="202.0" y="127.9" class="val" text-anchor="middle">-1</text><text x="202.0" y="262" class="ax" text-anchor="end" transform="rotate(-45 202.0 262)">2 Jul</text><rect x="231.0" y="110.4" width="31.2" height="13.6" class="neg"/><text x="246.6" y="137.0" class="val" text-anchor="middle">-3</text><text x="246.6" y="262" class="ax" text-anchor="end" transform="rotate(-45 246.6 262)">5 Jul</text><rect x="275.5" y="105.9" width="31.2" height="4.5" class="pos"/><text x="291.1" y="100.9" class="val" text-anchor="middle">+1</text><text x="291.1" y="262" class="ax" text-anchor="end" transform="rotate(-45 291.1 262)">11 Jul</text><rect x="320.1" y="110.4" width="31.2" height="40.7" class="neg"/><text x="335.7" y="164.1" class="val" text-anchor="middle">-9</text><text x="335.7" y="262" class="ax" text-anchor="end" transform="rotate(-45 335.7 262)">27 Jul</text><rect x="364.7" y="101.4" width="31.2" height="9.0" class="pos"/><text x="380.3" y="96.4" class="val" text-anchor="middle">+2</text><text x="380.3" y="262" class="ax" text-anchor="end" transform="rotate(-45 380.3 262)">30 Jul</text><rect x="409.3" y="101.4" width="31.2" height="9.0" class="pos"/><text x="424.9" y="96.4" class="val" text-anchor="middle">+2</text><text x="424.9" y="262" class="ax" text-anchor="end" transform="rotate(-45 424.9 262)">21 Aug</text><rect x="453.8" y="33.6" width="31.2" height="76.8" class="pos"/><text x="469.4" y="28.6" class="val" text-anchor="middle">+17</text><text x="469.4" y="262" class="ax" text-anchor="end" transform="rotate(-45 469.4 262)">27 Aug</text><rect x="498.4" y="56.2" width="31.2" height="54.2" class="pos"/><text x="514.0" y="51.2" class="val" text-anchor="middle">+12</text><text x="514.0" y="262" class="ax" text-anchor="end" transform="rotate(-45 514.0 262)">28 Aug</text><rect x="543.0" y="69.7" width="31.2" height="40.7" class="pos"/><text x="558.6" y="64.7" class="val" text-anchor="middle">+9</text><text x="558.6" y="262" class="ax" text-anchor="end" transform="rotate(-45 558.6 262)">3 Sep</text><rect x="587.5" y="51.6" width="31.2" height="58.8" class="pos"/><text x="603.1" y="46.6" class="val" text-anchor="middle">+13</text><text x="603.1" y="262" class="ax" text-anchor="end" transform="rotate(-45 603.1 262)">10 Sep</text><rect x="632.1" y="83.3" width="31.2" height="27.1" class="pos"/><text x="647.7" y="78.3" class="val" text-anchor="middle">+6</text><text x="647.7" y="262" class="ax" text-anchor="end" transform="rotate(-45 647.7 262)">16 Sep</text><line x1="535.3" x2="535.3" y1="20" y2="246" class="mark"/><line x1="579.9" x2="579.9" y1="20" y2="246" class="mark"/><text x="532.3" y="227.9" class="note" text-anchor="end">3 Sep: irons</text><text x="584.9" y="227.9" class="note" text-anchor="start">10 Sep: grip</text></svg><figcaption>Good shots against expected, in percentage points, by session. Good means within 15 yards of the target line and not short.</figcaption></figure>
+<p>16 September was your weakest recent day (40% good, 12 shanks in 94 shots). You noted your shoulder felt off and may have gripped down on the woods, so I treat that session as unreliable and use 10 September as your cleaner baseline.</p>
+</section>
+
+<section id="priorities">
+<h2>Your priorities</h2>
+<p class="lede">One swing priority, one aim priority and one short-game priority. Everything else stays as it is.</p>
+
+<h3>Swing priority: stay in posture through the ball on driver, 3 wood and hybrid</h3>
+<p>Across 422 long-club shots, the ones where you hit down through the ball were far cleaner than the ones where the club was travelling level or upward at impact. In your recent sessions, tops happened on 5% of the steeper shots and 27% of the shallower ones. Your good long-club shots are the ones where you stay down and trust the loft. The ugly ones are where you lift or scoop, which fits the early extension you have already identified in your own swing.</p>
+<figure class="one"><svg viewBox="0 0 640 230" role="img" aria-label="Share of ugly shots on long clubs by attack angle" class="fig"><text x="80" y="44" class="lab" text-anchor="end">Driver</text><rect x="90" y="14" width="190" height="22" class="pos"/><text x="288" y="30" class="val">50% ugly, hit down through it</text><rect x="90" y="40" width="304" height="22" class="neg hatch"/><text x="402" y="56" class="val">80% ugly, lifted or scooped</text><text x="80" y="112" class="lab" text-anchor="end">3 wood</text><rect x="90" y="82" width="175" height="22" class="pos"/><text x="273" y="98" class="val">46% ugly, hit down through it</text><rect x="90" y="108" width="247" height="22" class="neg hatch"/><text x="345" y="124" class="val">65% ugly, lifted or scooped</text><text x="80" y="180" class="lab" text-anchor="end">4 hybrid</text><rect x="90" y="150" width="182" height="22" class="pos"/><text x="280" y="166" class="val">48% ugly, hit down through it</text><rect x="90" y="176" width="255" height="22" class="neg hatch"/><text x="353" y="192" class="val">67% ugly, lifted or scooped</text></svg><figcaption>Share of ugly shots on each club, split by whether the attack angle was steeper than -2 degrees (hit down) or -2 and shallower (lifted). Ugly means shank, top, 30+ yards offline or 40% short.</figcaption></figure>
+<div class="figrow">
+<figure><svg viewBox="22 8 196 224" role="img" class="fig fig-s" aria-label="address posture"><line x1="24" x2="216" y1="214" y2="214" class="grid"/><line x1="102" y1="212" x2="108" y2="172" class="body"/><line x1="108" y1="172" x2="92" y2="130" class="body"/><line x1="92" y1="130" x2="126" y2="84" class="body"/><line x1="126" y1="84" x2="150" y2="132" class="body"/><line x1="150" y1="132" x2="168" y2="208" class="club"/><circle cx="138" cy="60" r="11" class="head"/><circle cx="170" cy="210" r="5" class="ballc"/></svg><figcaption>Address: hinge from the hips, spine tilted, knees soft.</figcaption></figure>
+<figure><svg viewBox="22 8 196 224" role="img" class="fig fig-s" aria-label="held posture"><line x1="24" x2="216" y1="214" y2="214" class="grid"/><line x1="102" y1="212" x2="110" y2="172" class="body"/><line x1="110" y1="172" x2="97" y2="130" class="body"/><line x1="97" y1="130" x2="127" y2="84" class="body"/><line x1="127" y1="84" x2="152" y2="134" class="body"/><line x1="152" y1="134" x2="170" y2="207" class="club"/><circle cx="139" cy="60" r="11" class="head"/><line x1="102" y1="212" x2="108" y2="172" class="ghost"/><line x1="108" y1="172" x2="92" y2="130" class="ghost"/><line x1="92" y1="130" x2="126" y2="84" class="ghost"/><line x1="126" y1="84" x2="150" y2="132" class="ghost"/><line x1="150" y1="132" x2="168" y2="208" class="club"/><circle cx="138" cy="60" r="11" class="ghosthead"/><text x="112" y="24" class="note" text-anchor="middle">Chest stays over the ball</text><circle cx="170" cy="210" r="5" class="ballc"/></svg><figcaption>Good impact: same posture, chest still over the ball.</figcaption></figure>
+<figure><svg viewBox="22 8 196 224" role="img" class="fig fig-s" aria-label="lifted posture"><line x1="24" x2="216" y1="214" y2="214" class="grid"/><line x1="102" y1="212" x2="114" y2="172" class="body"/><line x1="114" y1="172" x2="120" y2="130" class="body"/><line x1="120" y1="130" x2="126" y2="70" class="body"/><line x1="126" y1="70" x2="150" y2="120" class="body"/><line x1="150" y1="120" x2="164" y2="186" class="club"/><circle cx="129" cy="46" r="11" class="head"/><line x1="102" y1="212" x2="108" y2="172" class="ghost"/><line x1="108" y1="172" x2="92" y2="130" class="ghost"/><line x1="92" y1="130" x2="126" y2="84" class="ghost"/><line x1="126" y1="84" x2="150" y2="132" class="ghost"/><line x1="150" y1="132" x2="168" y2="208" class="club"/><circle cx="138" cy="60" r="11" class="ghosthead"/><path d="M96 118 L118 118" class="arrow"/><text x="112" y="24" class="note" text-anchor="middle">Hips push in, chest rises</text><circle cx="170" cy="210" r="5" class="ballc"/></svg><figcaption>Fault: hips move at the ball, chest rises, club lifts.</figcaption></figure>
+<figure><svg viewBox="22 8 196 224" role="img" class="fig fig-s" aria-label="wall posture"><line x1="24" x2="216" y1="214" y2="214" class="grid"/><rect x="38" y="70" width="12" height="144" class="wall"/><line x1="80" y1="212" x2="84" y2="172" class="body"/><line x1="84" y1="172" x2="64" y2="130" class="body"/><line x1="64" y1="130" x2="98" y2="84" class="body"/><line x1="98" y1="84" x2="122" y2="132" class="body"/><line x1="122" y1="132" x2="140" y2="208" class="club"/><circle cx="110" cy="60" r="11" class="head"/><text x="112" y="24" class="note" text-anchor="middle">Glutes stay on the wall</text><text x="44" y="228" class="note" text-anchor="middle">wall</text><circle cx="142" cy="210" r="5" class="ballc"/></svg><figcaption>Home fix: the wall drill (D1).</figcaption></figure>
+</div>
+<ol class="rules">
+<li><span><b>Setup.</b> Grip pressure 4 out of 10. Driver ball just inside your lead heel and tee it low, about half the ball above the crown. A high tee invites the lift.</span></li>
+<li><span><b>Feel.</b> Keep your chest over the ball until it has gone, and keep pressure through the middle of your feet, not the toes.</span></li>
+<li><span><b>Accept a low flight for now.</b> Your driver launches at about 7 degrees and still carries about 189 yards. A lower flight is a fair price for cleaner contact. Flattening the angle can wait until your strikes are consistent.</span></li>
+<li><span><b>Check it with SwingSync.</b> Success is attack angle steeper than -2 degrees on at least 7 shots in 10.</span></li>
+</ol>
+<div class="box"><p><b class="t">Correction to earlier advice.</b> I first suggested shallowing your attack angle on the long clubs. The full 14-session data says the opposite for you, so this plan does not use it.</p></div>
+
+<h3>Aim priority: square the 5 iron and stop the right miss</h3>
+<p>Your 5 iron finishes right 78% of the time, and the median miss is 12.7 yards right with the face about 2.5 degrees open to the target. Your other irons are far closer. This is a set-up fix before it is a swing fix.</p>
+<figure class="one"><svg viewBox="110 8 410 316" role="img" aria-label="Top-down alignment set-up with a stick on the toe line parallel to the target line" class="fig fig-n"><line x1="270" y1="280" x2="270" y2="46" class="tline"/><line x1="270" y1="46" x2="270" y2="20" class="flagp"/><path d="M270 20 L296 28 L270 36 Z" class="flag"/><text x="304" y="34" class="lab">Target</text><line x1="205" y1="300" x2="205" y2="150" class="stick"/><text x="196" y="196" class="lab" text-anchor="end">Stick along</text><text x="196" y="212" class="lab" text-anchor="end">your toes</text><ellipse cx="216" cy="262" rx="13" ry="7" class="shoe" transform="rotate(-8 216 262)"/><ellipse cx="216" cy="215" rx="13" ry="7" class="shoe" transform="rotate(8 216 215)"/><rect x="262" y="274" width="16" height="4" class="face"/><circle cx="270" cy="286" r="5" class="ballc"/><line x1="270" y1="280" x2="230" y2="308" class="club"/><line x1="270" y1="280" x2="222" y2="48" class="aim"/><text x="200" y="40" class="lab" text-anchor="middle">Aim here: left edge</text><circle cx="300" cy="90" r="4.5" class="miss"/><circle cx="318" cy="120" r="4.5" class="miss"/><circle cx="292" cy="140" r="4.5" class="miss"/><circle cx="330" cy="80" r="4.5" class="miss"/><circle cx="310" cy="170" r="4.5" class="miss"/><circle cx="340" cy="150" r="4.5" class="miss"/><circle cx="286" cy="190" r="4.5" class="miss"/><circle cx="322" cy="208" r="4.5" class="miss"/><text x="372" y="118" class="lab">5 iron misses</text><text x="372" y="134" class="lab">land here,</text><text x="372" y="150" class="lab">about 13 yds right</text></svg><figcaption>Top-down view from behind the ball. Toe-line stick parallel to the target line. Aim the face at the left edge of the green.</figcaption></figure>
+<ol class="rules">
+<li><span><b>Set the stick.</b> Lay a stick or garden cane along your toes, parallel to the target line (D3).</span></li>
+<li><span><b>Aim left.</b> Pick the left edge of the green or fairway with the 5 iron and align to that.</span></li>
+<li><span><b>Keep the grip.</b> Interlock, two and a half knuckles visible on the left hand, both Vs pointing at your right shoulder.</span></li>
+</ol>
+
+<h3>Short-game priority: one-club chipping and putting speed</h3>
+<p>Two changes save the most shots. Chip with one club, the same way every time. Putt for distance first and line second. Speed is what removes three-putts.</p>
+<figure class="one"><svg viewBox="10 52 560 160" role="img" aria-label="Side view of a one club chip: land one third of the way, then roll" class="fig"><line x1="20" x2="560" y1="170" y2="170" class="grid"/><rect x="60" y="164" width="360" height="6" class="green"/><circle cx="70" cy="165" r="5" class="ballc"/><path d="M70 165 Q125 70 190 165" class="flight"/><line x1="190" x2="440" y1="165" y2="165" class="roll"/><rect x="176" y="172" width="30" height="8" class="towel"/><text x="191" y="198" class="lab" text-anchor="middle">towel, land here</text><line x1="440" y1="165" x2="440" y2="105" class="flagp"/><path d="M440 105 L466 113 L440 121 Z" class="flag"/><text x="128" y="70" class="lab" text-anchor="middle">1 part in the air</text><text x="315" y="150" class="lab" text-anchor="middle">2 parts rolling</text></svg><figcaption>The one-club chip: land one third of the way to the hole and let it roll for the other two thirds.</figcaption></figure>
+</section>
+
+<section id="drills">
+<h2>Drill library</h2>
+<p class="lede">Nine drills, referenced by number in the schedule. Each has a job, a set-up, a measure and the mistakes to avoid.</p>
+<div class="box warn"><p><b class="t">Shoulder rule.</b> If your shoulder feels tight or sore, skip D2, D3 and D4 and do D1, D5, D6, D7 and D9 instead. Do not swing through discomfort. If it has not settled after a few days of rest, see a physio before adding range volume.</p></div>
+
+<article class="drill" id="D1"><header><span class="id">D1</span><h3>Posture wall</h3><span class="meta">Home, 4 min, no ball</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Teach your body to stay in posture instead of lifting.</dd>
+<dt>Set-up</dt><dd>Stand with your back to a wall or a solid chair back, with your glutes touching it. Hinge from the hips into your golf posture. Hold a club across your chest or grip it normally.</dd>
+<dt>Do this</dt><dd><ol><li>Make slow half-swings, keeping both glutes in contact with the wall until your hands pass your hip on the way down.</li><li>Feel your chest staying forward as your hips turn.</li><li>Do 3 sets of 8.</li></ol></dd>
+<dt>Measure</dt><dd>You can finish without your hips ever leaving the wall early.</dd>
+<dt>Avoid</dt><dd>Sliding your hips forward off the wall, or standing up out of the bend.</dd></dl></div></article>
+
+<article class="drill" id="D2"><header><span class="id">D2</span><h3>Hit down through it</h3><span class="meta">Range, driver, 3 wood, hybrid</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Turn the posture feel into contact on your worst clubs.</dd>
+<dt>Set-up</dt><dd>Grip pressure 4 out of 10. Tee the driver low. Half-swings first, then three-quarter. Alternate one ball per club, never more than three of the same in a row.</dd>
+<dt>Do this</dt><dd><ol><li>Two slow rehearsal swings holding your chest over an imaginary ball.</li><li>Hit the shot with the same feel, and stop your finish at three-quarter length.</li><li>Check attack angle after every ball.</li></ol></dd>
+<dt>Measure</dt><dd>Attack angle steeper than -2 degrees on 7 shots in 10, and no more than 4 ugly in 10.</dd>
+<dt>Avoid</dt><dd>Trying to help the ball up. A low flight is fine.</dd></dl></div></article>
+
+<article class="drill" id="D3"><header><span class="id">D3</span><h3>Stick alignment</h3><span class="meta">Range, 5 iron</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Stop the 5 iron finishing right.</dd>
+<dt>Set-up</dt><dd>One stick on the ground along your toes, parallel to the target line. If you have a second, place it along the ball-to-target line. A garden cane works.</dd>
+<dt>Do this</dt><dd><ol><li>Aim the face at the left edge of the target, then set your feet by the stick.</li><li>Hit 5 balls, check the median offline number.</li><li>Take the stick away for 5 balls and compare.</li></ol></dd>
+<dt>Measure</dt><dd>Median miss under 8 yards right across 20 balls.</dd>
+<dt>Avoid</dt><dd>Aiming your feet at the target but the face somewhere else.</dd></dl></div></article>
+
+<article class="drill" id="D4"><header><span class="id">D4</span><h3>Impact tape strike check</h3><span class="meta">Range, 10 balls</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Find out where you actually strike the face. SwingSync does not record this.</dd>
+<dt>Set-up</dt><dd>Put impact tape or foot powder spray on the face of a 7 iron, PW or a club that has been shanking. Hit 5 shots, then read the marks.</dd>
+<dt>Read it</dt><dd>Marks toward the hosel end usually mean standing too close or reaching in. Marks toward the toe usually mean standing too far away. Marks near the top edge point to lifting, and the posture drills D1 and D2 are the fix.</dd>
+<dt>Measure</dt><dd>Most marks inside the central third.</dd></dl>
+<figure class="one" style="margin:6px 0 8px"><svg viewBox="0 0 420 230" role="img" aria-label="Club face map showing heel, centre and toe strike zones" class="fig fig-n"><path d="M60 60 Q60 40 84 40 L336 40 Q360 40 360 60 L360 150 Q360 172 336 172 L84 172 Q60 172 60 150 Z" class="clubface"/><line x1="200" x2="200" y1="40" y2="172" class="grid"/><line x1="280" x2="280" y1="40" y2="172" class="grid"/><line x1="60" x2="360" y1="84" y2="84" class="grid"/><line x1="60" x2="360" y1="128" y2="128" class="grid"/><circle cx="240" cy="106" r="16" class="sweet"/><text x="240" y="110" class="val" text-anchor="middle">centre</text><text x="130" y="112" class="lab" text-anchor="middle">heel side</text><text x="320" y="112" class="lab" text-anchor="middle">toe side</text><text x="210" y="196" class="lab" text-anchor="middle">Toward you (hosel end) on the left, away from you on the right</text><text x="240" y="26" class="lab" text-anchor="middle">Top edge: topped shots</text></svg><figcaption>Face zones. Read these marks against the guide above.</figcaption></figure></div></article>
+
+<article class="drill" id="D5"><header><span class="id">D5</span><h3>One-club chipping</h3><span class="meta">Home, 10 to 15 min</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Reliable contact and distance from just off the green.</dd>
+<dt>Set-up</dt><dd>Use an 8 iron or PW. Ball slightly back of centre, weight about 70% on your lead foot, putting-style stroke with minimal wrist. Chip foam balls off a doormat or carpet offcut onto a towel. Keep well clear of the building work.</dd>
+<dt>Do this</dt><dd><ol><li>Put the towel about one third of the way to the target.</li><li>Land 10 balls on the towel, then move it and repeat.</li><li>Change the distance every 5 balls.</li></ol></dd>
+<dt>Measure</dt><dd>7 of 10 land on the towel.</dd></dl></div></article>
+
+<article class="drill" id="D6"><header><span class="id">D6</span><h3>Putting speed ladder</h3><span class="meta">Home or practice green, 10 to 15 min</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Distance control, which prevents three-putts.</dd>
+<dt>Set-up</dt><dd>Three lanes at 3, 6 and 9 feet on the carpet. On a practice green use 20, 30 and 40 feet.</dd>
+<dt>Do this</dt><dd><ol><li>Three balls per lane.</li><li>Each ball should stop on the line or up to 18 inches past it.</li><li>Rotate lanes, and never hit the same distance twice in a row.</li></ol></dd>
+<dt>Measure</dt><dd>6 of 9 in the zone.</dd></dl>
+<figure class="one" style="margin:6px 0 8px"><svg viewBox="0 0 600 200" role="img" aria-label="Putting speed ladder with three lanes at 3, 6 and 9 feet" class="fig"><line x1="40" x2="262" y1="40" y2="40" class="grid"/><circle cx="40" cy="40" r="5" class="ballc"/><rect x="172" y="26" width="66" height="28" class="zone"/><line x1="172" x2="172" y1="22" y2="58" class="tline"/><text x="248" y="45" class="lab">3 ft lane</text><line x1="40" x2="394" y1="94" y2="94" class="grid"/><circle cx="40" cy="94" r="5" class="ballc"/><rect x="304" y="80" width="66" height="28" class="zone"/><line x1="304" x2="304" y1="76" y2="112" class="tline"/><text x="380" y="99" class="lab">6 ft lane</text><line x1="40" x2="526" y1="148" y2="148" class="grid"/><circle cx="40" cy="148" r="5" class="ballc"/><rect x="436" y="134" width="66" height="28" class="zone"/><line x1="436" x2="436" y1="130" y2="166" class="tline"/><text x="512" y="153" class="lab">9 ft lane</text><text x="40" y="188" class="lab">Success: stop on the line or up to 18 inches past it.</text></svg><figcaption>Lanes and finish zone.</figcaption></figure></div></article>
+
+<article class="drill" id="D7"><header><span class="id">D7</span><h3>Lag circle and pressure putts</h3><span class="meta">Home or practice green, 10 min</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Turn long putts into short ones, then hole the short ones.</dd>
+<dt>Do this</dt><dd><ol><li>Lag: from 20 to 40 feet, aim to stop inside a 3-foot circle around the hole. 10 balls.</li><li>Pressure: hole 8 of 10 from 3 feet. If you miss the target, start the set again.</li></ol></dd>
+<dt>Measure</dt><dd>5 of 10 lags inside the circle and 8 of 10 short putts.</dd></dl></div></article>
+
+<article class="drill" id="D8"><header><span class="id">D8</span><h3>Good, bad, ugly random game</h3><span class="meta">Range, 40 to 60 balls</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Practice like the course. New club and new target on every ball.</dd>
+<dt>Set-up</dt><dd>Pick 3 or 4 clubs. Full routine every ball. Change club and target each ball.</dd>
+<dt>Score</dt><dd>Good is 1 point (inside 15 yards of the line, right distance). Bad is 0. Ugly (shank, top, unplayable) is -1. Beat your last score.</dd>
+<dt>Tee test</dt><dd>Hit 10 with your 4 iron and count the balls inside a 30-yard corridor.</dd></dl></div></article>
+
+<article class="drill" id="D9"><header><span class="id">D9</span><h3>Mobility warm-up</h3><span class="meta">6 to 8 min, before every session</span></header><div class="body"><dl>
+<dt>Job</dt><dd>Free up the upper-back and hip rotation that limit your turn.</dd>
+<dt>Do this</dt><dd><ol><li>Open book, lying on your side: 8 slow reps each side.</li><li>90/90 hip switches: 8 each way.</li><li>Cat and camel: 8 slow reps.</li></ol></dd>
+<dt>Stop if</dt><dd>Anything is sharp or pinches. Mild stretching is fine.</dd></dl></div></article>
+</section>
+
+<section id="schedule">
+<h2>Four-week schedule</h2>
+<p class="lede">Three sessions a week, timed around your Tuesday to Thursday office days. Tick each item as you go. Ticks are saved on this device.</p>
+<div class="wk"><h3>Week 1: Set the baseline</h3><p class="theme">Learn the checkpoints. Keep the course simple.</p><h4>Range (Saturday or Sunday, about 65 minutes, 120 balls)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w1-range-0" aria-label="Done: Mobility warm-up"></td><td class="dur">8 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-range-1" aria-label="Done: 5 iron with the stick, aim at the left edge"></td><td class="dur">25 balls</td><td>5 iron with the stick, aim at the left edge</td><td class="ref">D3</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-range-2" aria-label="Done: 7 iron with impact tape, read the strike"></td><td class="dur">20 balls</td><td>7 iron with impact tape, read the strike</td><td class="ref">D4</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-range-3" aria-label="Done: 3 wood and hybrid, hit down through it (no driver yet)"></td><td class="dur">40 balls</td><td>3 wood and hybrid, hit down through it (no driver yet)</td><td class="ref">D2</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-range-4" aria-label="Done: Random game: 7 iron, PW, sand wedge, scored good, bad, ugly"></td><td class="dur">25 balls</td><td>Random game: 7 iron, PW, sand wedge, scored good, bad, ugly</td><td class="ref">D8</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-range-5" aria-label="Done: Cool-down. Write your numbers in the log"></td><td class="dur">10 balls</td><td>Cool-down. Write your numbers in the log</td><td class="ref"></td></tr></tbody></table></div><h4>Home (Monday or Friday, 40 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w1-home-0" aria-label="Done: Mobility warm-up"></td><td class="dur">6 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-home-1" aria-label="Done: Posture wall"></td><td class="dur">4 min</td><td>Posture wall</td><td class="ref">D1</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-home-2" aria-label="Done: Putting speed ladder"></td><td class="dur">15 min</td><td>Putting speed ladder</td><td class="ref">D6</td></tr><tr><td class="ck"><input type="checkbox" data-id="w1-home-3" aria-label="Done: One-club chipping onto a towel"></td><td class="dur">15 min</td><td>One-club chipping onto a towel</td><td class="ref">D5</td></tr></tbody></table></div><h4>Course (Sunday or Monday, 60 to 75 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w1-course-0" aria-label="Done: course session"></td><td>9 holes from the yellow tees. Tee off with the 4 iron or 6 iron. Log putts, fairways, greens and penalties in 18 Birdies. If you cannot get out, spend 20 minutes chipping and 20 putting on a practice green.</td></tr></tbody></table></div></div><div class="wk"><h3>Week 2: Build</h3><p class="theme">Add the driver to the range and the lag circle to the putting.</p><h4>Range (Saturday or Sunday, about 65 minutes, 120 balls)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w2-range-0" aria-label="Done: Mobility warm-up"></td><td class="dur">8 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-range-1" aria-label="Done: 5 iron with the stick"></td><td class="dur">20 balls</td><td>5 iron with the stick</td><td class="ref">D3</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-range-2" aria-label="Done: Long clubs: 3 wood 20, hybrid 15, driver 15"></td><td class="dur">50 balls</td><td>Long clubs: 3 wood 20, hybrid 15, driver 15</td><td class="ref">D2</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-range-3" aria-label="Done: Random game: 4 iron, 7 iron, PW, sand wedge"></td><td class="dur">40 balls</td><td>Random game: 4 iron, 7 iron, PW, sand wedge</td><td class="ref">D8</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-range-4" aria-label="Done: Impact tape on any club that shanked"></td><td class="dur">10 balls</td><td>Impact tape on any club that shanked</td><td class="ref">D4</td></tr></tbody></table></div><h4>Home (Monday or Friday, 40 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w2-home-0" aria-label="Done: Mobility warm-up"></td><td class="dur">6 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-home-1" aria-label="Done: Posture wall"></td><td class="dur">4 min</td><td>Posture wall</td><td class="ref">D1</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-home-2" aria-label="Done: Putting speed ladder"></td><td class="dur">10 min</td><td>Putting speed ladder</td><td class="ref">D6</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-home-3" aria-label="Done: Lag circle"></td><td class="dur">10 min</td><td>Lag circle</td><td class="ref">D7</td></tr><tr><td class="ck"><input type="checkbox" data-id="w2-home-4" aria-label="Done: One-club chipping"></td><td class="dur">10 min</td><td>One-club chipping</td><td class="ref">D5</td></tr></tbody></table></div><h4>Course (Sunday or Monday, 60 to 75 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w2-course-0" aria-label="Done: course session"></td><td>9 holes from the yellow tees, 4 iron or 6 iron off the tee. Use the aim card for every full shot: left edge with the 5 iron, right of centre with the wedges.</td></tr></tbody></table></div></div><div class="wk"><h3>Week 3: Add pressure</h3><p class="theme">Score your practice. Every ball counts.</p><h4>Range (Saturday or Sunday, about 65 minutes, 120 balls)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w3-range-0" aria-label="Done: Mobility warm-up"></td><td class="dur">8 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-range-1" aria-label="Done: 5 iron with the stick"></td><td class="dur">20 balls</td><td>5 iron with the stick</td><td class="ref">D3</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-range-2" aria-label="Done: Long clubs: driver 15, 3 wood 15"></td><td class="dur">30 balls</td><td>Long clubs: driver 15, 3 wood 15</td><td class="ref">D2</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-range-3" aria-label="Done: Random game with scoring. Beat last week’s score"></td><td class="dur">60 balls</td><td>Random game with scoring. Beat last week’s score</td><td class="ref">D8</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-range-4" aria-label="Done: 4 iron tee test: count balls inside a 30-yard corridor"></td><td class="dur">10 balls</td><td>4 iron tee test: count balls inside a 30-yard corridor</td><td class="ref">D8</td></tr></tbody></table></div><h4>Home (Monday or Friday, 40 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w3-home-0" aria-label="Done: Mobility warm-up"></td><td class="dur">6 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-home-1" aria-label="Done: Posture wall"></td><td class="dur">4 min</td><td>Posture wall</td><td class="ref">D1</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-home-2" aria-label="Done: Putting speed ladder"></td><td class="dur">10 min</td><td>Putting speed ladder</td><td class="ref">D6</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-home-3" aria-label="Done: Lag circle and pressure putts"></td><td class="dur">10 min</td><td>Lag circle and pressure putts</td><td class="ref">D7</td></tr><tr><td class="ck"><input type="checkbox" data-id="w3-home-4" aria-label="Done: One-club chipping"></td><td class="dur">10 min</td><td>One-club chipping</td><td class="ref">D5</td></tr></tbody></table></div><h4>Course (Sunday or Monday, 60 to 75 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w3-course-0" aria-label="Done: course session"></td><td>9 holes from the yellow tees playing for bogey on every hole. Count penalties and three-putts. Hit a provisional whenever a ball could be lost.</td></tr></tbody></table></div></div><div class="wk"><h3>Week 4: Benchmark</h3><p class="theme">Repeat the week 1 mix and compare. Gate check for the driver.</p><h4>Range (Saturday or Sunday, about 65 minutes, 120 balls)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w4-range-0" aria-label="Done: Mobility warm-up"></td><td class="dur">8 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-range-1" aria-label="Done: 5 iron with the stick"></td><td class="dur">20 balls</td><td>5 iron with the stick</td><td class="ref">D3</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-range-2" aria-label="Done: Long clubs: driver 15, 3 wood 15, hybrid 10"></td><td class="dur">40 balls</td><td>Long clubs: driver 15, 3 wood 15, hybrid 10</td><td class="ref">D2</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-range-3" aria-label="Done: 4 iron tee test"></td><td class="dur">10 balls</td><td>4 iron tee test</td><td class="ref">D8</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-range-4" aria-label="Done: Random game: 7 iron, 9 iron, PW, sand wedge"></td><td class="dur">40 balls</td><td>Random game: 7 iron, 9 iron, PW, sand wedge</td><td class="ref">D8</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-range-5" aria-label="Done: Wedge tempo, half swings"></td><td class="dur">10 balls</td><td>Wedge tempo, half swings</td><td class="ref"></td></tr></tbody></table></div><h4>Home (Monday or Friday, 40 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w4-home-0" aria-label="Done: Mobility warm-up"></td><td class="dur">6 min</td><td>Mobility warm-up</td><td class="ref">D9</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-home-1" aria-label="Done: Posture wall"></td><td class="dur">4 min</td><td>Posture wall</td><td class="ref">D1</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-home-2" aria-label="Done: Putting speed ladder"></td><td class="dur">10 min</td><td>Putting speed ladder</td><td class="ref">D6</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-home-3" aria-label="Done: Lag circle"></td><td class="dur">10 min</td><td>Lag circle</td><td class="ref">D7</td></tr><tr><td class="ck"><input type="checkbox" data-id="w4-home-4" aria-label="Done: One-club chipping"></td><td class="dur">10 min</td><td>One-club chipping</td><td class="ref">D5</td></tr></tbody></table></div><h4>Course (Sunday or Monday, 60 to 75 minutes)</h4><div class="scroll"><table><tbody><tr><td class="ck"><input type="checkbox" data-id="w4-course-0" aria-label="Done: course session"></td><td>Benchmark: 9 holes from the yellow tees. Target 49 or fewer, against your 52 at Top Meadow. Log putts, fairways, greens and penalties.</td></tr></tbody></table></div></div>
+<h3>Gates</h3>
+<ol class="rules">
+<li><span><b>Driver back on the course.</b> Only after two range sessions in a row with under 45% ugly on the driver. Until then, 4 iron or 6 iron off the tee on any hole with trouble.</span></li>
+<li><span><b>Shoulder.</b> If it is off on the day, use the shoulder rule in the drill library.</span></li>
+<li><span><b>Change one thing at a time.</b> If you alter your grip or ball position, write it in the log so the data stays comparable.</span></li>
+</ol>
+</section>
+
+<section id="course">
+<h2>Course management</h2>
+<p class="lede">Your typical miss differs by club. Aim to cancel it, then choose clubs that keep trouble out of play.</p>
+<figure class="one"><svg viewBox="0 0 640 338" role="img" aria-label="Typical miss in yards by club, left and right of target" class="fig"><line x1="370" x2="370" y1="8" y2="316" class="zero"/><line x1="130" x2="130" y1="8" y2="316" class="grid"/><text x="130" y="330" class="ax" text-anchor="middle">15</text><line x1="210" x2="210" y1="8" y2="316" class="grid"/><text x="210" y="330" class="ax" text-anchor="middle">10</text><line x1="290" x2="290" y1="8" y2="316" class="grid"/><text x="290" y="330" class="ax" text-anchor="middle">5</text><line x1="450" x2="450" y1="8" y2="316" class="grid"/><text x="450" y="330" class="ax" text-anchor="middle">5</text><line x1="530" x2="530" y1="8" y2="316" class="grid"/><text x="530" y="330" class="ax" text-anchor="middle">10</text><line x1="610" x2="610" y1="8" y2="316" class="grid"/><text x="610" y="330" class="ax" text-anchor="middle">15</text><text x="366" y="330" class="ax" text-anchor="end">0</text><text x="130" y="330" class="ax" text-anchor="middle" dx="-22">left</text><text x="610" y="330" class="ax" text-anchor="middle" dx="22">right</text><text x="110" y="27" class="lab" text-anchor="end">Driver</text><rect x="248.4" y="12" width="121.6" height="20" class="mid"/><text x="240.4" y="27" class="val" text-anchor="end">8 L, n=34</text><text x="110" y="55" class="lab" text-anchor="end">4 hybrid</text><rect x="230.8" y="40" width="139.2" height="20" class="mid"/><text x="222.8" y="55" class="val" text-anchor="end">9 L, n=25</text><text x="110" y="83" class="lab" text-anchor="end">3 wood</text><rect x="370.0" y="68" width="11.2" height="20" class="pos"/><text x="389.2" y="83" class="val" text-anchor="start">1 R, n=27</text><text x="110" y="111" class="lab" text-anchor="end">4 iron</text><rect x="370.0" y="96" width="22.4" height="20" class="pos"/><text x="400.4" y="111" class="val" text-anchor="start">1 R, n=28</text><text x="110" y="139" class="lab" text-anchor="end">5 iron</text><rect x="370.0" y="124" width="203.2" height="20" class="neg"/><text x="581.2" y="139" class="val" text-anchor="start">13 R, n=45</text><text x="110" y="167" class="lab" text-anchor="end">6 iron</text><rect x="370.0" y="152" width="38.4" height="20" class="pos"/><text x="416.4" y="167" class="val" text-anchor="start">2 R, n=46</text><text x="110" y="195" class="lab" text-anchor="end">7 iron</text><rect x="370.0" y="180" width="112.0" height="20" class="mid"/><text x="490.0" y="195" class="val" text-anchor="start">7 R, n=11</text><text x="110" y="223" class="lab" text-anchor="end">8 iron</text><rect x="370.0" y="208" width="68.8" height="20" class="pos"/><text x="446.8" y="223" class="val" text-anchor="start">4 R, n=10</text><text x="110" y="251" class="lab" text-anchor="end">9 iron</text><rect x="370.0" y="236" width="48.0" height="20" class="pos"/><text x="426.0" y="251" class="val" text-anchor="start">3 R, n=30</text><text x="110" y="279" class="lab" text-anchor="end">Pitching wedge</text><rect x="256.4" y="264" width="113.6" height="20" class="mid"/><text x="248.4" y="279" class="val" text-anchor="end">7 L, n=23</text><text x="110" y="307" class="lab" text-anchor="end">Sand wedge</text><rect x="370.0" y="292" width="14.4" height="20" class="pos"/><text x="392.4" y="307" class="val" text-anchor="start">1 R, n=29</text></svg><figcaption>Median miss at carry in yards, 3 to 16 September. Small samples (7 iron, 8 iron) are indicative only.</figcaption></figure>
+<div class="scroll"><table>
+<thead><tr><th>Club</th><th class="num">Carry</th><th>Typical miss</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Driver</td><td class="num">189</td><td>8 left, 59% ugly</td><td>Range only until the gate is met</td></tr>
+<tr><td>4 hybrid</td><td class="num">178</td><td>9 left, 56% ugly</td><td>Aim right of centre if you must</td></tr>
+<tr><td>3 wood</td><td class="num">169</td><td>Scattered, 52% ugly</td><td>Open holes only</td></tr>
+<tr><td>4 iron</td><td class="num">175</td><td>1 right, 61% good</td><td>Default tee club on tight holes</td></tr>
+<tr><td>5 iron</td><td class="num">165</td><td>13 right</td><td>Aim at left edge</td></tr>
+<tr><td>6 iron</td><td class="num">151</td><td>2 right</td><td>Aim at the middle</td></tr>
+<tr><td>9 iron</td><td class="num">117</td><td>3 right, 70% good</td><td>Preferred lay-up club</td></tr>
+<tr><td>Pitching wedge</td><td class="num">100</td><td>7 left</td><td>Aim slightly right of centre</td></tr>
+<tr><td>Sand wedge</td><td class="num">89</td><td>1 right, 72% good</td><td>Your most reliable club</td></tr>
+</tbody></table></div>
+<h3>Ten rules for the round</h3>
+<ol class="rules">
+<li><span><b>Tee off with the 4 iron</b> on any hole with trouble, and 6 iron on the tightest. It carries 175 yards and keeps you in play.</span></li>
+<li><span><b>Lay up to a number.</b> Leave yourself a 9 iron, 7 iron or sand wedge, your three best approach clubs.</span></li>
+<li><span><b>Aim at the middle of the green.</b> Ignore the flag.</span></li>
+<li><span><b>Aim for your miss.</b> Left edge with the 5 iron. Right of centre with the wedges.</span></li>
+<li><span><b>Hit a provisional</b> any time a ball could be lost.</span></li>
+<li><span><b>Take the medicine.</b> Chip out sideways after trouble. Double bogey is fine. Triple is the score you are trying to remove.</span></li>
+<li><span><b>Lag long putts.</b> Beyond 20 feet, your target is a 3-foot circle, not the hole.</span></li>
+<li><span><b>Play the yellow tees.</b></span></li>
+<li><span><b>Keep the 3 iron in the bag</b> until you are hitting it cleanly on the range.</span></li>
+<li><span><b>Log it.</b> Putts, fairways, greens, penalties in 18 Birdies after every round.</span></li>
+</ol>
+<h3>Pre-shot routine</h3>
+<ol class="rules">
+<li><span><b>Decide.</b> Pick the club and aim point from the card above.</span></li>
+<li><span><b>Align.</b> Choose a spot a few feet ahead on the line and set the face to it, then your feet.</span></li>
+<li><span><b>Commit.</b> One rehearsal swing with the posture feel, then go. Grip pressure 4 out of 10.</span></li>
+</ol>
+</section>
+
+<section id="log">
+<h2>Session log</h2>
+<p class="lede">Log every session. Entries are saved on this device. Copy the text export and paste it into a chat with me, along with your fresh SwingSync exports, and I will check your gates and adjust the plan.</p>
+<form class="log" id="logform" autocomplete="off">
+<label>Date<input type="date" id="f_date" required></label>
+<label>Session<select id="f_type"><option>Range</option><option>Home</option><option>Course</option></select></label>
+<label>Balls hit<input type="number" id="f_balls" min="0" inputmode="numeric"></label>
+<label>Good<input type="number" id="f_good" min="0" inputmode="numeric"></label>
+<label>Bad<input type="number" id="f_bad" min="0" inputmode="numeric"></label>
+<label>Ugly<input type="number" id="f_ugly" min="0" inputmode="numeric"></label>
+<label>Shanks<input type="number" id="f_shank" min="0" inputmode="numeric"></label>
+<label>Tops<input type="number" id="f_top" min="0" inputmode="numeric"></label>
+<label>Putts<input type="number" id="f_putts" min="0" inputmode="numeric"></label>
+<label>3-putts<input type="number" id="f_three" min="0" inputmode="numeric"></label>
+<label>Greens hit<input type="number" id="f_gir" min="0" max="18" inputmode="numeric"></label>
+<label>Fairways hit<input type="number" id="f_fir" min="0" max="18" inputmode="numeric"></label>
+<label>Shoulder<select id="f_sh"><option>Fine</option><option>Tight</option><option>Sore</option></select></label>
+<label class="wide">Changes or notes (grip, ball position, anything different)<input type="text" id="f_notes" maxlength="200"></label>
+<div class="wide actions"><button type="submit">Save entry</button><button type="button" class="ghost" id="b_export">Show text export</button><button type="button" class="ghost" id="b_clear">Clear all entries</button></div>
+</form>
+<div id="loghost"></div>
+<textarea class="exp" id="exp" readonly hidden aria-label="Text export of the log"></textarea>
+</section>
+
+<section id="notes">
+<h2>Data notes</h2>
+<p>These numbers come from your 14 SwingSync exports (1,552 shots). A few things to keep in mind when reading them.</p>
+<ul>
+<li>Good, bad and ugly are my definitions, not SwingSync's. Good: within 15 yards of the target line and not short. Bad: 15 to 30 yards off, or 15 to 40% short. Ugly: a shank, a top, 30+ yards off or 40%+ short.</li>
+<li>Sample sizes are small for some clubs. The 3 iron (8 shots), gap wedge (4), 7 iron and 8 iron (10 to 11 each in September) are indicative only.</li>
+<li>The 21 August export has no left or right sign on offline distance, so I inferred direction from launch direction and spin. It only affects that session.</li>
+<li>SwingSync does not record where the ball hits the face. D4 is how you find out.</li>
+<li>Attack angle readings on a range mat can differ from grass. Use them to compare your own sessions, not as absolute numbers.</li>
+<li>The link between attack angle and ugly shots is a strong association, not proof of cause. The drills test it: if D2 does not improve your contact, tell me and we change the plan.</li>
+<li>Your 3 September iron change and 10 September grip change are marked on the trend chart. 16 September, with a possible grip-down on the woods and an off shoulder, is treated as unreliable.</li>
+</ul>
+</section>
+</main>
+
+<footer><div class="wrap"><p>Prepared 30 September 2026. Print this page for a paper copy of the plan.</p></div></footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#B4532A"/></marker></defs></svg>
+
+<script>
+(function(){
+  var mem={};
+  var store=(function(){
+    try{ var t='__t'; window.localStorage.setItem(t,'1'); window.localStorage.removeItem(t); return window.localStorage; }catch(e){}
+    try{ var s='__t'; window.sessionStorage.setItem(s,'1'); window.sessionStorage.removeItem(s); return window.sessionStorage; }catch(e2){}
+    return { getItem:function(k){return mem.hasOwnProperty(k)?mem[k]:null;}, setItem:function(k,v){mem[k]=String(v);} };
+  })();
+  function read(k,def){ try{ var v=store.getItem(k); return v?JSON.parse(v):def; }catch(e){ return def; } }
+  function write(k,v){ try{ store.setItem(k,JSON.stringify(v)); }catch(e){} }
+
+  // ---- checklist
+  var checks=read('mrgc.checks',{});
+  var boxes=document.querySelectorAll('input[data-id]');
+  function paintCheck(b){ var tr=b.parentNode.parentNode; if(b.checked){tr.className='done';}else{tr.className='';} }
+  for(var i=0;i<boxes.length;i++){
+    (function(b){
+      b.checked=!!checks[b.getAttribute('data-id')];
+      paintCheck(b);
+      b.addEventListener('change',function(){ checks[b.getAttribute('data-id')]=b.checked; write('mrgc.checks',checks); paintCheck(b); });
+    })(boxes[i]);
+  }
+
+  // ---- log
+  var log=read('mrgc.log',[]);
+  var host=document.getElementById('loghost');
+  var f=function(id){return document.getElementById(id);};
+  function today(){ var d=new Date(); var m=('0'+(d.getMonth()+1)).slice(-2), dd=('0'+d.getDate()).slice(-2); return d.getFullYear()+'-'+m+'-'+dd; }
+  f('f_date').value=today();
+  function num(id){ var v=f(id).value; return v===''?null:Number(v); }
+  function pct(a,b){ return (b>0)?Math.round(a/b*100)+'%':''; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function render(){
+    if(!log.length){ host.innerHTML='<div class="empty">No entries yet. Save your first session above.</div>'; return; }
+    var rows=log.slice().sort(function(a,b){return a.date<b.date?1:(a.date>b.date?-1:0);});
+    var h='<div class="scroll"><table><thead><tr><th>Date</th><th>Type</th><th class="num">Balls</th><th class="num">Good</th><th class="num">Ugly</th><th class="num">Shanks</th><th class="num">Putts</th><th class="num">3-putts</th><th class="num">GIR</th><th class="num">FIR</th><th>Shoulder</th><th>Notes</th><th></th></tr></thead><tbody>';
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i]; var tot=(r.good||0)+(r.bad||0)+(r.ugly||0);
+      h+='<tr><td>'+esc(r.date)+'</td><td>'+esc(r.type)+'</td><td class="num">'+esc(r.balls==null?'':r.balls)+'</td><td class="num">'+(tot?pct(r.good||0,tot):'')+'</td><td class="num">'+(tot?pct(r.ugly||0,tot):'')+'</td><td class="num">'+esc(r.shank==null?'':r.shank)+'</td><td class="num">'+esc(r.putts==null?'':r.putts)+'</td><td class="num">'+esc(r.three==null?'':r.three)+'</td><td class="num">'+esc(r.gir==null?'':r.gir)+'</td><td class="num">'+esc(r.fir==null?'':r.fir)+'</td><td>'+esc(r.sh)+'</td><td>'+esc(r.notes)+'</td><td><button type="button" class="ghost" data-del="'+esc(r.id)+'">Delete</button></td></tr>';
+    }
+    h+='</tbody></table></div>';
+    host.innerHTML=h;
+    var dels=host.querySelectorAll('button[data-del]');
+    for(var j=0;j<dels.length;j++){ dels[j].addEventListener('click',function(){ var id=this.getAttribute('data-del'); log=log.filter(function(x){return String(x.id)!==id;}); write('mrgc.log',log); render(); buildExport(); }); }
+  }
+  function buildExport(){
+    var lines=['date\ttype\tballs\tgood\tbad\tugly\tshanks\ttops\tputts\t3putts\tgir\tfir\tshoulder\tnotes'];
+    var rows=log.slice().sort(function(a,b){return a.date<b.date?-1:1;});
+    for(var i=0;i<rows.length;i++){ var r=rows[i]; lines.push([r.date,r.type,r.balls,r.good,r.bad,r.ugly,r.shank,r.top,r.putts,r.three,r.gir,r.fir,r.sh,r.notes].map(function(x){return x==null?'':x;}).join('\t')); }
+    f('exp').value=lines.join('\n');
+  }
+  f('logform').addEventListener('submit',function(e){
+    e.preventDefault();
+    var entry={id:Date.now(),date:f('f_date').value||today(),type:f('f_type').value,balls:num('f_balls'),good:num('f_good'),bad:num('f_bad'),ugly:num('f_ugly'),shank:num('f_shank'),top:num('f_top'),putts:num('f_putts'),three:num('f_three'),gir:num('f_gir'),fir:num('f_fir'),sh:f('f_sh').value,notes:f('f_notes').value};
+    log.push(entry); write('mrgc.log',log); render(); buildExport();
+    var ids=['f_balls','f_good','f_bad','f_ugly','f_shank','f_top','f_putts','f_three','f_gir','f_fir','f_notes'];
+    for(var i=0;i<ids.length;i++){ f(ids[i]).value=''; }
+  });
+  f('b_export').addEventListener('click',function(){ buildExport(); var t=f('exp'); t.hidden=!t.hidden; if(!t.hidden){ t.focus(); t.select(); } });
+  f('b_clear').addEventListener('click',function(){ if(!log.length){return;} if(window.confirm('Delete every log entry on this device?')){ log=[]; write('mrgc.log',log); render(); buildExport(); } });
+  render(); buildExport();
+})();
+</script>
+</body>
+</html>
